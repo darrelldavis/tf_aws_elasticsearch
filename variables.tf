@@ -7,13 +7,13 @@ variable "create_iam_service_linked_role" {
 variable "domain_name" {
   description = "Domain name for Elasticsearch cluster"
   type        = string
-  default     = "es-domain"
+  default     = "search"
 }
 
 variable "es_version" {
-  description = "Version of Elasticsearch to deploy (default 5.1)"
+  description = "Version of Elasticsearch to deploy (default 6.4)"
   type        = string
-  default     = "5.1"
+  default     = "6.4"
 }
 
 variable "instance_type" {
@@ -74,6 +74,12 @@ variable "ebs_volume_type" {
   description = "Storage type of EBS volumes, if used (default gp2)"
   type        = string
   default     = "gp2"
+}
+
+variable "ebs_iops" {
+  description = "The baseline input/output (I/O) performance of EBS volumes attached to data nodes. Applicable only for the Provisioned IOPS EBS volume type."
+  type        = number
+  default     = 1000
 }
 
 variable "kms_key_id" {
