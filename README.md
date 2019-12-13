@@ -24,7 +24,9 @@ Several options affect the resilience and scalability of your Elasticsearch doma
 
 This will result in a cluster with three dedicated master nodes, balanced across two availability zones.
 
-For a production deployment it may also make sense to use EBS volumes rather that instance storage; to do so, set `ebs_volume_size` greater than 0 and optionally specify a value for `ebs_volume_type` (right now the only supported values are `gp2` and `magnetic`).
+For a production deployment it may also make sense to use EBS volumes rather that instance storage; to do so, set `ebs_volume_size` greater than 0 and optionally specify a value for `ebs_volume_type` (`gp2`, `io1`, or `magnetic`). If you choose `io1` (Provisioned IOPS SSD) for the EBS volume type, enter the baseline IOPS performance in `ebs_iops` (default 1000).
+
+
 
 
 ## Terraform versions
@@ -123,6 +125,7 @@ module "es" {
 | dedicated\_master\_type | ES instance type to be used for dedicated masters (default same as instance_type) | string | `"false"` | no |
 | domain\_name | Domain name for Elasticsearch cluster | string | `"es-domain"` | no |
 | domain\_prefix | String to be prefixed to search domain. Default: tf- | string | `"tf-"` | no |
+| ebs\_iops | If you choose `io1` for the EBS volume type, for Provisioned IOPS, enter the baseline IOPS performance that you want | number | `"1000"` | no |
 | ebs\_volume\_size | Optionally use EBS volumes for data storage by specifying volume size in GB (default 0) | number | `"0"` | no |
 | ebs\_volume\_type | Storage type of EBS volumes, if used (default gp2) | string | `"gp2"` | no |
 | encrypt\_at\_rest | Enable encrption at rest (only specific instance family types support it: m4, c4, r4, i2, i3 default: false) | bool | `"false"` | no |
