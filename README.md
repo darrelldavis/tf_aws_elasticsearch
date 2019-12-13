@@ -129,7 +129,7 @@ module "es" {
 | ebs\_volume\_size | Optionally use EBS volumes for data storage by specifying volume size in GB (default 0) | number | `"0"` | no |
 | ebs\_volume\_type | Storage type of EBS volumes, if used (default gp2) | string | `"gp2"` | no |
 | encrypt\_at\_rest | Enable encrption at rest (only specific instance family types support it: m4, c4, r4, i2, i3 default: false) | bool | `"false"` | no |
-| es\_version | Version of Elasticsearch to deploy (default 5.1) | string | `"5.1"` | no |
+| es\_version | Version of Elasticsearch to deploy (default 6.4) | string | `"6.4"` | no |
 | es\_zone\_awareness | Enable zone awareness for Elasticsearch cluster (default false) | bool | `"false"` | no |
 | es\_zone\_awareness\_count | Number of availability zones used for data nodes (default 2) | number | `"2"` | no |
 | instance\_count | Number of data nodes in the cluster (default 6) | number | `"6"` | no |
